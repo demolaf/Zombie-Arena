@@ -188,7 +188,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MediaQuery.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="UISizing.cpp" />
     <ClCompile Include="Zombie Arena.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MediaQuery.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
