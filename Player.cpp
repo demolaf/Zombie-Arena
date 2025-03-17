@@ -187,8 +187,34 @@ void Player::update(float elapsedTime, sf::Vector2i mousePosition)
 	float yDifference = mousePosition.y - m_Resolution.y / 2; // calculates the angle between the center
 	// of the screen i.e. m_Resolution.x / 2 and the current mouse position.
 	float xDifference = mousePosition.x - m_Resolution.x / 2;
-	float angle = (atan2(yDifference, xDifference) * 180) / 3.141; // The atan2 function is used to calculate the angle formed by an 
-	// imaginary line formed between the center of the screen(m_Resolution.x / 2, m_Resolution.y / 2) and 
-	// the current mouse position(mousePosition.x, mousePosition.y).
+
+	//The atan2 function is used to calculate the angle formed by an imaginary line formed between the center 
+	// of the screen(m_Resolution.x / 2, m_Resolution.y / 2) and the current mouse 
+	// position(mousePosition.x, mousePosition.y).
+	float angleInRadians = atan2(yDifference, xDifference);
+	float angleConvertedToDegrees = angleInRadians * 180;
+	float angle = angleConvertedToDegrees / 3.141; 
 	m_Sprite.setRotation(angle);
+}
+
+void Player::updateSpeed()
+{
+	// 20% speed upgrade
+	m_Speed += (START_SPEED * .2);
+}
+
+void Player::upgradeHealth()
+{
+	// 20% max health upgrade
+	m_MaxHealth += (START_HEALTH * .2);
+}
+
+void Player::increaseHealthLevel(int amount)
+{
+	m_Health += amount;
+	// But not beyond the maximum
+	if (m_Health > m_MaxHealth)
+	{
+		m_Health = m_MaxHealth;
+	}
 }
