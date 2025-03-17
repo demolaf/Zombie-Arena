@@ -5,6 +5,7 @@ class MediaQuery
 {
 public:
 	static sf::VideoMode getCurrentVM();
+	static sf::Vector2f getResolution();
 	static int screenWidth();
 	static int screenHeight();
 	static int centerX();
