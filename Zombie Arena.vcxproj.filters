@@ -18,21 +18,21 @@
     <ClCompile Include="Zombie Arena.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="src\player\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MediaQuery.cpp">
+    <ClCompile Include="src\core\utils\media_query\MediaQuery.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UISizing.cpp">
+    <ClCompile Include="src\core\constants\UISizing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="src\player\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MediaQuery.h">
+    <ClInclude Include="src\core\utils\media_query\MediaQuery.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

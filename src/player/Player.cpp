@@ -1,35 +1,41 @@
+#include <SFML/Graphics.hpp>
 #include "player.h"
-#include "UISizing.cpp"
+#include "../core/constants/UISizing.cpp"
 
 Player::Player()
 	: m_Speed(START_SPEED),
 	m_Health(START_HEALTH),
 	m_MaxHealth(START_HEALTH),
 	m_Texture(),
-	m_Sprite()
+	m_Sprite(),
+	m_DownPressed(false),
+	m_UpPressed(false),
+	m_LeftPressed(false),
+	m_RightPressed(false),
+	m_TileSize(0)
 {
 	// Associate a texture with the sprite
 	// !!Watch this space!!
-	m_Texture.loadFromFile("graphics/player.png");
+	m_Texture.loadFromFile("assets/graphics/player.png");
 	m_Sprite.setTexture(m_Texture);
 
 	// Set the origin of the sprite to the center,
 	// for smooth rotation
-	float playerCenter = UISizing::playerLocalBoundsCenter();
-	m_Sprite.setOrigin(playerCenter, playerCenter);
+	sf::FloatRect playerLocalBounds = m_Sprite.getLocalBounds();
+	m_Sprite.setOrigin(25, 25);
 }
 
 void Player::spawn(sf::IntRect arena, sf::Vector2f resolution, int tileSize) {
 	// Place the player in the middle of the arena
-	m_Position.x = arena.width / 2;
-	m_Position.y = arena.height / 2;
+	m_Position.x = arena.width / 2.0;
+	m_Position.y = arena.height / 2.0;
 
 	// Copy the details of the arena
 	// to the player's m_Arena
 	m_Arena.left = arena.left;
 	m_Arena.width = arena.width;
 	m_Arena.top = arena.top;
-	m_Arena.height = arena.height;
+	m_Arena.height = arena.height; 
 
 	// Remember how big the titles are in this arena
 	m_TileSize = tileSize;
@@ -39,7 +45,7 @@ void Player::spawn(sf::IntRect arena, sf::Vector2f resolution, int tileSize) {
 	m_Resolution.y = resolution.y;
 }
 
-void Player::resetPlayerStats() 
+void Player::resetPlayerStats()
 {
 	m_Speed = START_SPEED;
 	m_Health = START_HEALTH;
@@ -184,9 +190,9 @@ void Player::update(float elapsedTime, sf::Vector2i mousePosition)
 	}
 
 	// Calculate the angle the player is facing
-	float yDifference = mousePosition.y - m_Resolution.y / 2; // calculates the angle between the center
+	float yDifference = mousePosition.y - m_Resolution.y / 2.0; // calculates the angle between the center
 	// of the screen i.e. m_Resolution.x / 2 and the current mouse position.
-	float xDifference = mousePosition.x - m_Resolution.x / 2;
+	float xDifference = mousePosition.x - m_Resolution.x / 2.0;
 
 	//The atan2 function is used to calculate the angle formed by an imaginary line formed between the center 
 	// of the screen(m_Resolution.x / 2, m_Resolution.y / 2) and the current mouse 

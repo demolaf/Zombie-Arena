@@ -18,7 +18,7 @@ private:
 	sf::Texture m_Texture;
 	
 	// What is the screen resolution
-	sf::Vector2f m_Resolution;
+	sf::Vector2u m_Resolution;
 
 	// What size is the current arena
 	sf::IntRect m_Arena;

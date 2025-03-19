@@ -16,7 +16,7 @@ sf::VideoMode MediaQuery::getCurrentVM()
 
 sf::Vector2f MediaQuery::getResolution()
 {
-	sf::Vector2f resolution(instance.currentVideoMode.width, instance.currentVideoMode.height);
+	sf::Vector2u resolution(instance.currentVideoMode.width, instance.currentVideoMode.height);
 	return resolution;
 }
 

@@ -1,0 +1,83 @@
+﻿  MediaQuery.cpp
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\core\utils\media_query\MediaQuery.cpp(19,84): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\core\utils\media_query\MediaQuery.cpp(19,84): warning C4244:         with
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\core\utils\media_query\MediaQuery.cpp(19,84): warning C4244:         [
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\core\utils\media_query\MediaQuery.cpp(19,84): warning C4244:             T=float
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\core\utils\media_query\MediaQuery.cpp(19,84): warning C4244:         ]
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\core\utils\media_query\MediaQuery.cpp(19,51): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\core\utils\media_query\MediaQuery.cpp(19,51): warning C4244:         with
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\core\utils\media_query\MediaQuery.cpp(19,51): warning C4244:         [
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\core\utils\media_query\MediaQuery.cpp(19,51): warning C4244:             T=float
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\core\utils\media_query\MediaQuery.cpp(19,51): warning C4244:         ]
+  Player.cpp
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(7,10): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(8,13): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(30,29): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(30,29): warning C4244:         with
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(30,29): warning C4244:         [
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(30,29): warning C4244:             T=float
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(30,29): warning C4244:         ]
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(31,30): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(31,30): warning C4244:         with
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(31,30): warning C4244:         [
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(31,30): warning C4244:             T=float
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(31,30): warning C4244:         ]
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(44,29): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(44,29): warning C4244:         with
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(44,29): warning C4244:         [
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(44,29): warning C4244:             T=float
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(44,29): warning C4244:         ]
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(44,29): warning C4244:         and
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(44,29): warning C4244:         [
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(44,29): warning C4244:             T=unsigned int
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(44,29): warning C4244:         ]
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(45,29): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(45,29): warning C4244:         with
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(45,29): warning C4244:         [
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(45,29): warning C4244:             T=float
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(45,29): warning C4244:         ]
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(45,29): warning C4244:         and
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(45,29): warning C4244:         [
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(45,29): warning C4244:             T=unsigned int
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(45,29): warning C4244:         ]
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(51,13): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(52,16): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(174,32): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(174,32): warning C4244:         with
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(174,32): warning C4244:         [
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(174,32): warning C4244:             T=float
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(174,32): warning C4244:         ]
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(179,31): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(179,31): warning C4244:         with
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(179,31): warning C4244:         [
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(179,31): warning C4244:             T=float
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(179,31): warning C4244:         ]
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(184,33): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(184,33): warning C4244:         with
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(184,33): warning C4244:         [
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(184,33): warning C4244:             T=float
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(184,33): warning C4244:         ]
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(189,30): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(189,30): warning C4244:         with
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(189,30): warning C4244:         [
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(189,30): warning C4244:             T=float
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(189,30): warning C4244:         ]
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(193,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(195,20): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(202,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(209,26): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\src\player\Player.cpp(215,31): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+  UISizing.cpp
+  Zombie Arena.cpp
+C:\Users\ademolafadumo\source\repos\Zombie Arena\Zombie Arena.cpp(25,27): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\Zombie Arena.cpp(25,27): warning C4244:         with
+C:\Users\ademolafadumo\source\repos\Zombie Arena\Zombie Arena.cpp(25,27): warning C4244:         [
+C:\Users\ademolafadumo\source\repos\Zombie Arena\Zombie Arena.cpp(25,27): warning C4244:             T=float
+C:\Users\ademolafadumo\source\repos\Zombie Arena\Zombie Arena.cpp(25,27): warning C4244:         ]
+C:\Users\ademolafadumo\source\repos\Zombie Arena\Zombie Arena.cpp(24,63): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\ademolafadumo\source\repos\Zombie Arena\Zombie Arena.cpp(24,63): warning C4244:         with
+C:\Users\ademolafadumo\source\repos\Zombie Arena\Zombie Arena.cpp(24,63): warning C4244:         [
+C:\Users\ademolafadumo\source\repos\Zombie Arena\Zombie Arena.cpp(24,63): warning C4244:             T=float
+C:\Users\ademolafadumo\source\repos\Zombie Arena\Zombie Arena.cpp(24,63): warning C4244:         ]
+  Generating Code...
+  Zombie Arena.vcxproj -> C:\Users\ademolafadumo\source\repos\Zombie Arena\Debug\Zombie Arena.exe

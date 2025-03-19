@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
-#include "Player.h"
-#include "MediaQuery.h"
+#include "src/player/Player.h"
+#include "src/core/utils/media_query/MediaQuery.h"
 
 int main()
 {
