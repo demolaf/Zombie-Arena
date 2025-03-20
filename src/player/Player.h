@@ -48,7 +48,7 @@ private:
 public:
 	Player();
 
-	void spawn(sf::IntRect arena, sf::Vector2f resolution, int tileSize);
+	void spawn(sf::IntRect arena, sf::Vector2u resolution, int tileSize);
 	
 	// Call this at the end of every game
 	void resetPlayerStats();
@@ -66,7 +66,7 @@ public:
 	sf::Vector2f getCenter();
 	
 	// What angle is the player facing
-	float getRotation();
+	sf::Angle getRotation();
 	
 	// Send a copy of the sprite to the main function
 	sf::Sprite getSprite();

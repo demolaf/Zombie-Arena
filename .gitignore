@@ -1,5 +1,6 @@
 # project based
 .vs/
+dependencies/
 
 # Prerequisites
 *.d

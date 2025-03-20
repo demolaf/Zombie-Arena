@@ -14,20 +14,19 @@ sf::VideoMode MediaQuery::getCurrentVM()
 	return vm;
 }
 
-sf::Vector2f MediaQuery::getResolution()
+sf::Vector2u MediaQuery::getResolution()
 {
-	sf::Vector2u resolution(instance.currentVideoMode.width, instance.currentVideoMode.height);
-	return resolution;
+	return instance.currentVideoMode.size;
 }
 
 int MediaQuery::screenWidth()
 {
-	return instance.currentVideoMode.width;
+	return static_cast<int>(instance.currentVideoMode.size.x);
 }
 
 int MediaQuery::screenHeight()
 {
-	return instance.currentVideoMode.height;
+	return static_cast<int>(instance.currentVideoMode.size.y);
 }
 
 int MediaQuery::centerX()

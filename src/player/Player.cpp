@@ -1,13 +1,18 @@
 #include <SFML/Graphics.hpp>
 #include "player.h"
 #include "../core/constants/UISizing.cpp"
+#include <iostream>
+
+std::string getAssetPath(const std::string& filename) {
+	return std::filesystem::current_path().string() + "/assets/graphics/" + filename;
+}
 
 Player::Player()
 	: m_Speed(START_SPEED),
 	m_Health(START_HEALTH),
 	m_MaxHealth(START_HEALTH),
-	m_Texture(),
-	m_Sprite(),
+	m_Texture(getAssetPath("player.png")),
+	m_Sprite(m_Texture),
 	m_DownPressed(false),
 	m_UpPressed(false),
 	m_LeftPressed(false),
@@ -16,26 +21,23 @@ Player::Player()
 {
 	// Associate a texture with the sprite
 	// !!Watch this space!!
-	m_Texture.loadFromFile("assets/graphics/player.png");
-	m_Sprite.setTexture(m_Texture);
+	// m_Texture.loadFromFile("assets/graphics/player.png");
+	// m_Sprite.setTexture(m_Texture);
 
 	// Set the origin of the sprite to the center,
 	// for smooth rotation
 	sf::FloatRect playerLocalBounds = m_Sprite.getLocalBounds();
-	m_Sprite.setOrigin(25, 25);
+	m_Sprite.setOrigin({ 25, 25 });
 }
 
-void Player::spawn(sf::IntRect arena, sf::Vector2f resolution, int tileSize) {
+void Player::spawn(sf::IntRect arena, sf::Vector2u resolution, int tileSize) {
 	// Place the player in the middle of the arena
-	m_Position.x = arena.width / 2.0;
-	m_Position.y = arena.height / 2.0;
+	m_Position.x = arena.getCenter().x;
+	m_Position.y = arena.getCenter().y;
 
 	// Copy the details of the arena
 	// to the player's m_Arena
-	m_Arena.left = arena.left;
-	m_Arena.width = arena.width;
-	m_Arena.top = arena.top;
-	m_Arena.height = arena.height; 
+	m_Arena.size = arena.size;
 
 	// Remember how big the titles are in this arena
 	m_TileSize = tileSize;
@@ -84,7 +86,7 @@ sf::Vector2f Player::getCenter()
 	return m_Position;
 }
 
-float Player::getRotation()
+sf::Angle Player::getRotation()
 {
 	return m_Sprite.getRotation();
 }
@@ -168,25 +170,25 @@ void Player::update(float elapsedTime, sf::Vector2i mousePosition)
 	// Ensure the player doesn't go out of bounds of the arena and the tile size
 	// ensures that the player stops on a tile before the wall instead of the actual
 	
-	if (m_Position.x > m_Arena.width - m_TileSize)
+	if (m_Position.x > m_Arena.size.x - m_TileSize)
 	{
 		// Maintain position
-		m_Position.x = m_Arena.width - m_TileSize;
+		m_Position.x = m_Arena.size.x - m_TileSize;
 	}
 
-	if (m_Position.x < m_Arena.left + m_TileSize)
+	if (m_Position.x < m_Arena.position.x + m_TileSize)
 	{
-		m_Position.x = m_Arena.left + m_TileSize;
+		m_Position.x = m_Arena.position.x + m_TileSize;
 	}
 
-	if (m_Position.y > m_Arena.height - m_TileSize)
+	if (m_Position.y > m_Arena.size.y - m_TileSize)
 	{
-		m_Position.y = m_Arena.height - m_TileSize;
+		m_Position.y = m_Arena.size.y - m_TileSize;
 	}
 
-	if (m_Position.y < m_Arena.top + m_TileSize)
+	if (m_Position.y < m_Arena.position.y + m_TileSize)
 	{
-		m_Position.y = m_Arena.top + m_TileSize;
+		m_Position.y = m_Arena.position.y + m_TileSize;
 	}
 
 	// Calculate the angle the player is facing
@@ -200,7 +202,7 @@ void Player::update(float elapsedTime, sf::Vector2i mousePosition)
 	float angleInRadians = atan2(yDifference, xDifference);
 	float angleConvertedToDegrees = angleInRadians * 180;
 	float angle = angleConvertedToDegrees / 3.141; 
-	m_Sprite.setRotation(angle);
+	m_Sprite.setRotation(sf::degrees(angle));
 }
 
 void Player::updateSpeed()

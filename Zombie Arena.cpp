@@ -18,11 +18,10 @@ int main()
 	// Get the screen resolution and create an SFML window
 	sf::VideoMode vm = MediaQuery::getCurrentVM();
 
-	sf::RenderWindow window(vm, "Zombie Arena", sf::Style::Fullscreen);
+	sf::RenderWindow window(vm, "Zombie Arena", sf::Style::Default);
 
 	// Create an SFML View for the main action
-	sf::View mainView(sf::FloatRect(0, 0, MediaQuery::screenWidth(),
-		MediaQuery::screenHeight()));
+	sf::View mainView(sf::FloatRect({ 0, 0 }, { static_cast<float>(vm.size.x), static_cast<float>(vm.size.y) }));
 
 	// Here is our clock for timing everything
 	sf::Clock clock;
@@ -45,142 +44,141 @@ int main()
 	// The boundaries of the arena
 	sf::IntRect arena;
 
-	// The main game loop
-	while (window.isOpen())
-	{
-		// Handle input
-
-		// Handle events by polling
-		sf::Event event;
-		while (window.pollEvent(event))
+	// Handle events
+	// [&window, &state, &clock, &player, &arena] is the capture list
+	const auto onKeyPressed = [&window, &state, &clock, &player, &arena](const sf::Event::KeyPressed& keyPressed) 
 		{
-			if (event.type == sf::Event::KeyPressed)
+			// Handle the player quitting
+			if (keyPressed.scancode == sf::Keyboard::Scancode::Escape)
 			{
-				// Pause a game while playing
-				if (event.key.code == sf::Keyboard::Return && state == State::PLAYING)
-				{
-					state = State::PAUSED;
-				}
-				// Restart while paused
-				else if (event.key.code == sf::Keyboard::Return && state == State::PAUSED)
-				{
-					state = State::PLAYING;
-					// Reset the clock so there isn't a frame jump
-					clock.restart();
-				}
-				// Start a new game while in GAME_OVER state
-				else if (event.key.code == sf::Keyboard::Return && state == State::GAME_OVER)
-				{
-					state = State::LEVELING_UP;
-				}
-
-				if (state == State::PLAYING)
-				{
-
-				}
-			}
-		} // End event polling
-
-		// Handle the player quitting
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-		{
-			window.close();
-		}
-
-		// Hanfle WASD while playing
-		if (state == State::PLAYING)
-		{
-			// Handle the pressing and releasing of WASD keys
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-			{
-				player.moveUp();
-			}
-			else
-			{
-				player.stopUp();
+				window.close();
 			}
 
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+			// Pause a game while playing
+			if (keyPressed.code == sf::Keyboard::Key::Enter && state == State::PLAYING)
 			{
-				player.moveDown();
+				state = State::PAUSED;
 			}
-			else
-			{
-				player.stopDown();
-			}
-
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-			{
-				player.moveLeft();
-			}
-			else
-			{
-				player.stopLeft();
-			}
-
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-			{
-				player.moveRight();
-			}
-			else
-			{
-				player.stopRight();
-			}
-		} // End WASD while playing
-
-		// Handle the LEVELING up state
-		if (state == State::LEVELING_UP)
-		{
-			// Handle the player LEVELING up
-			if (event.key.code == sf::Keyboard::Num1)
+			// Restart while paused
+			else if (keyPressed.code == sf::Keyboard::Key::Enter && state == State::PAUSED)
 			{
 				state = State::PLAYING;
+				// Reset the clock so there isn't a frame jump
+				clock.restart();
 			}
-
-			if (event.key.code == sf::Keyboard::Num2)
+			// Start a new game while in GAME_OVER state
+			else if (keyPressed.code == sf::Keyboard::Key::Enter && state == State::GAME_OVER)
 			{
-				state = State::PLAYING;
-			}
-
-			if (event.key.code == sf::Keyboard::Num3)
-			{
-				state = State::PLAYING;
-			}
-
-			if (event.key.code == sf::Keyboard::Num4)
-			{
-				state = State::PLAYING;
-			}
-
-			if (event.key.code == sf::Keyboard::Num5)
-			{
-				state = State::PLAYING;
-			}
-
-			if (event.key.code == sf::Keyboard::Num6)
-			{
-				state = State::PLAYING;
+				state = State::LEVELING_UP;
 			}
 
 			if (state == State::PLAYING)
 			{
-				// Prepare the level
-				// We will modify the next two lines later
-				arena.width = 500;
-				arena.height = 500;
-				arena.left = 0;
-				arena.top = 0;
 
-				// We will modify this line of code later
-				int tileSize = 50;
-
-				// Spawn the player in middle of the arena
-				player.spawn(arena, MediaQuery::getResolution(), tileSize);
-
-				// Reset clock so there isn't a frame jump
-				clock.restart();
 			}
-		} // End LEVELING up
+
+			// Handle WASD while playing
+			if (state == State::PLAYING)
+			{
+				// Handle the pressing and releasing of WASD keys
+				if (keyPressed.code == sf::Keyboard::Key::W)
+				{
+					player.moveUp();
+				}
+				else
+				{
+					player.stopUp();
+				}
+
+				if (keyPressed.code == sf::Keyboard::Key::S)
+				{
+					player.moveDown();
+				}
+				else
+				{
+					player.stopDown();
+				}
+
+				if (keyPressed.code == sf::Keyboard::Key::A)
+				{
+					player.moveLeft();
+				}
+				else
+				{
+					player.stopLeft();
+				}
+
+				if (keyPressed.code == sf::Keyboard::Key::D)
+				{
+					player.moveRight();
+				}
+				else
+				{
+					player.stopRight();
+				}
+			} // End WASD while playing
+
+			// Handle the LEVELING up state
+			if (state == State::LEVELING_UP)
+			{
+				// Handle the player LEVELING up
+				if (keyPressed.code == sf::Keyboard::Key::Num1)
+				{
+					state = State::PLAYING;
+				}
+
+				if (keyPressed.code == sf::Keyboard::Key::Num2)
+				{
+					state = State::PLAYING;
+				}
+
+				if (keyPressed.code == sf::Keyboard::Key::Num3)
+				{
+					state = State::PLAYING;
+				}
+
+				if (keyPressed.code == sf::Keyboard::Key::Num4)
+				{
+					state = State::PLAYING;
+				}
+
+				if (keyPressed.code == sf::Keyboard::Key::Num5)
+				{
+					state = State::PLAYING;
+				}
+
+				if (keyPressed.code == sf::Keyboard::Key::Num6)
+				{
+					state = State::PLAYING;
+				}
+
+				if (state == State::PLAYING)
+				{
+					// Prepare the level
+					// We will modify the next two lines later
+					arena.size.x = 500;
+					arena.size.y = 500;
+					arena.position.x = 0;
+					arena.position.y = 0;
+
+					// We will modify this line of code later
+					int tileSize = 50;
+
+					// Spawn the player in middle of the arena
+					player.spawn(arena, MediaQuery::getResolution(), tileSize);
+
+					// Reset clock so there isn't a frame jump
+					clock.restart();
+				}
+			} // End LEVELING up
+
+		}; // end event polling
+
+	// The main game loop
+	while (window.isOpen())
+	{
+		// Handle input
+		window.handleEvents(onKeyPressed);
 
 		/*
 		************
