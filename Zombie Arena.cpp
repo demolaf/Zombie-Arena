@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "src/player/Player.h"
 #include "src/core/utils/media_query/MediaQuery.h"
+#include <iostream>
 
 int main()
 {
@@ -21,7 +22,7 @@ int main()
 	sf::RenderWindow window(vm, "Zombie Arena", sf::Style::Default);
 
 	// Create an SFML View for the main action
-	sf::View mainView(sf::FloatRect({ 0, 0 }, { static_cast<float>(vm.size.x), static_cast<float>(vm.size.y) }));
+	sf::View mainView(sf::FloatRect({ 0, 0 }, { MediaQuery::screenWidth(), MediaQuery::screenHeight() }));
 
 	// Here is our clock for timing everything
 	sf::Clock clock;
@@ -55,19 +56,19 @@ int main()
 			}
 
 			// Pause a game while playing
-			if (keyPressed.code == sf::Keyboard::Key::Enter && state == State::PLAYING)
+			if (keyPressed.scancode == sf::Keyboard::Scancode::Enter && state == State::PLAYING)
 			{
 				state = State::PAUSED;
 			}
 			// Restart while paused
-			else if (keyPressed.code == sf::Keyboard::Key::Enter && state == State::PAUSED)
+			else if (keyPressed.scancode == sf::Keyboard::Scancode::Enter && state == State::PAUSED)
 			{
 				state = State::PLAYING;
 				// Reset the clock so there isn't a frame jump
 				clock.restart();
 			}
 			// Start a new game while in GAME_OVER state
-			else if (keyPressed.code == sf::Keyboard::Key::Enter && state == State::GAME_OVER)
+			else if (keyPressed.scancode == sf::Keyboard::Scancode::Enter && state == State::GAME_OVER)
 			{
 				state = State::LEVELING_UP;
 			}
@@ -81,7 +82,7 @@ int main()
 			if (state == State::PLAYING)
 			{
 				// Handle the pressing and releasing of WASD keys
-				if (keyPressed.code == sf::Keyboard::Key::W)
+				if (keyPressed.scancode == sf::Keyboard::Scancode::W)
 				{
 					player.moveUp();
 				}
@@ -90,7 +91,7 @@ int main()
 					player.stopUp();
 				}
 
-				if (keyPressed.code == sf::Keyboard::Key::S)
+				if (keyPressed.scancode == sf::Keyboard::Scancode::S)
 				{
 					player.moveDown();
 				}
@@ -99,7 +100,7 @@ int main()
 					player.stopDown();
 				}
 
-				if (keyPressed.code == sf::Keyboard::Key::A)
+				if (keyPressed.scancode == sf::Keyboard::Scancode::A)
 				{
 					player.moveLeft();
 				}
@@ -108,7 +109,7 @@ int main()
 					player.stopLeft();
 				}
 
-				if (keyPressed.code == sf::Keyboard::Key::D)
+				if (keyPressed.scancode == sf::Keyboard::Scancode::D)
 				{
 					player.moveRight();
 				}
@@ -122,32 +123,32 @@ int main()
 			if (state == State::LEVELING_UP)
 			{
 				// Handle the player LEVELING up
-				if (keyPressed.code == sf::Keyboard::Key::Num1)
+				if (keyPressed.scancode == sf::Keyboard::Scancode::Num1)
 				{
 					state = State::PLAYING;
 				}
 
-				if (keyPressed.code == sf::Keyboard::Key::Num2)
+				if (keyPressed.scancode == sf::Keyboard::Scancode::Num2)
 				{
 					state = State::PLAYING;
 				}
 
-				if (keyPressed.code == sf::Keyboard::Key::Num3)
+				if (keyPressed.scancode == sf::Keyboard::Scancode::Num3)
 				{
 					state = State::PLAYING;
 				}
 
-				if (keyPressed.code == sf::Keyboard::Key::Num4)
+				if (keyPressed.scancode == sf::Keyboard::Scancode::Num4)
 				{
 					state = State::PLAYING;
 				}
 
-				if (keyPressed.code == sf::Keyboard::Key::Num5)
+				if (keyPressed.scancode == sf::Keyboard::Scancode::Num5)
 				{
 					state = State::PLAYING;
 				}
 
-				if (keyPressed.code == sf::Keyboard::Key::Num6)
+				if (keyPressed.scancode == sf::Keyboard::Scancode::Num6)
 				{
 					state = State::PLAYING;
 				}
@@ -156,10 +157,8 @@ int main()
 				{
 					// Prepare the level
 					// We will modify the next two lines later
-					arena.size.x = 500;
-					arena.size.y = 500;
-					arena.position.x = 0;
-					arena.position.y = 0;
+					arena.size = sf::Vector2i{500, 500};
+					arena.position = sf::Vector2i{0, 0};
 
 					// We will modify this line of code later
 					int tileSize = 50;

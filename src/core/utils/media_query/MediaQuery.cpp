@@ -19,14 +19,14 @@ sf::Vector2u MediaQuery::getResolution()
 	return instance.currentVideoMode.size;
 }
 
-int MediaQuery::screenWidth()
+float MediaQuery::screenWidth()
 {
-	return static_cast<int>(instance.currentVideoMode.size.x);
+	return static_cast<float>(instance.currentVideoMode.size.x);
 }
 
-int MediaQuery::screenHeight()
+float MediaQuery::screenHeight()
 {
-	return static_cast<int>(instance.currentVideoMode.size.y);
+	return static_cast<float>(instance.currentVideoMode.size.y);
 }
 
 int MediaQuery::centerX()

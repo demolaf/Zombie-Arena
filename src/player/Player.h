@@ -63,7 +63,7 @@ public:
 	sf::FloatRect getPosition();
 	
 	// Where is the center of the player
-	sf::Vector2f getCenter();
+	sf::Vector2f getCenter() const;
 	
 	// What angle is the player facing
 	sf::Angle getRotation();
@@ -96,5 +96,5 @@ public:
 	void increaseHealthLevel(int amount);
 	
 	// How much health has the player currently got?
-	int getHealth();
+	int getHealth() const;
 };

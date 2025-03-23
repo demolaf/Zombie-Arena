@@ -3,15 +3,11 @@
 #include "../core/constants/UISizing.cpp"
 #include <iostream>
 
-std::string getAssetPath(const std::string& filename) {
-	return std::filesystem::current_path().string() + "/assets/graphics/" + filename;
-}
-
 Player::Player()
 	: m_Speed(START_SPEED),
 	m_Health(START_HEALTH),
 	m_MaxHealth(START_HEALTH),
-	m_Texture(getAssetPath("player.png")),
+	m_Texture(),
 	m_Sprite(m_Texture),
 	m_DownPressed(false),
 	m_UpPressed(false),
@@ -21,19 +17,20 @@ Player::Player()
 {
 	// Associate a texture with the sprite
 	// !!Watch this space!!
-	// m_Texture.loadFromFile("assets/graphics/player.png");
-	// m_Sprite.setTexture(m_Texture);
+	if (!m_Texture.loadFromFile("./assets/graphics/player.png"))
+	{
+		printf("Error loading player texture");
+	}
 
-	// Set the origin of the sprite to the center,
-	// for smooth rotation
-	sf::FloatRect playerLocalBounds = m_Sprite.getLocalBounds();
+	// Set the origin of the sprite to the center, for smooth rotation
+	m_Sprite.setTextureRect(sf::IntRect{ {0, 0}, {50, 50} });
 	m_Sprite.setOrigin({ 25, 25 });
 }
 
 void Player::spawn(sf::IntRect arena, sf::Vector2u resolution, int tileSize) {
 	// Place the player in the middle of the arena
-	m_Position.x = arena.getCenter().x;
-	m_Position.y = arena.getCenter().y;
+	m_Position.x = arena.size.x / 2.0;
+	m_Position.y = arena.size.y / 2.0;
 
 	// Copy the details of the arena
 	// to the player's m_Arena
@@ -43,8 +40,7 @@ void Player::spawn(sf::IntRect arena, sf::Vector2u resolution, int tileSize) {
 	m_TileSize = tileSize;
 
 	// Store the resolution for future use
-	m_Resolution.x = resolution.x;
-	m_Resolution.y = resolution.y;
+	m_Resolution = resolution;
 }
 
 void Player::resetPlayerStats()
@@ -81,7 +77,7 @@ sf::FloatRect Player::getPosition()
 	return m_Sprite.getGlobalBounds();
 }
 
-sf::Vector2f Player::getCenter()
+sf::Vector2f Player::getCenter() const
 {
 	return m_Position;
 }
@@ -96,7 +92,7 @@ sf::Sprite Player::getSprite()
 	return m_Sprite;
 }
 
-int Player::getHealth()
+int Player::getHealth() const
 {
 	return m_Health;
 }
@@ -200,9 +196,8 @@ void Player::update(float elapsedTime, sf::Vector2i mousePosition)
 	// of the screen(m_Resolution.x / 2, m_Resolution.y / 2) and the current mouse 
 	// position(mousePosition.x, mousePosition.y).
 	float angleInRadians = atan2(yDifference, xDifference);
-	float angleConvertedToDegrees = angleInRadians * 180;
-	float angle = angleConvertedToDegrees / 3.141; 
-	m_Sprite.setRotation(sf::degrees(angle));
+	float angleConvertedToDegrees = angleInRadians * (180.0f / 3.141);
+	m_Sprite.setRotation(sf::degrees(angleConvertedToDegrees));
 }
 
 void Player::updateSpeed()
