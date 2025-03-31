@@ -1,7 +1,9 @@
+#include "ZombieArena.h"
 #include <SFML/Graphics.hpp>
 #include "src/player/Player.h"
 #include "src/core/utils/media_query/MediaQuery.h"
 #include <iostream>
+#include "src/core/constants/Assets/Assets.h"
 
 int main()
 {
@@ -45,9 +47,16 @@ int main()
 	// The boundaries of the arena
 	sf::IntRect arena;
 
+	// Create the background
+	sf::VertexArray background;
+
+	// Load the texture for our background vertex array
+	sf::Texture textureBackground;
+	textureBackground.loadFromFile(Assets::backgroundSheet);
+
 	// Handle events
 	// [&window, &state, &clock, &player, &arena] is the capture list
-	const auto onKeyPressed = [&window, &state, &clock, &player, &arena](const sf::Event::KeyPressed& keyPressed) 
+	const auto onKeyPressed = [&window, &state, &clock, &player, &arena, &background](const sf::Event::KeyPressed& keyPressed) 
 		{
 			// Handle the player quitting
 			if (keyPressed.scancode == sf::Keyboard::Scancode::Escape)
@@ -160,8 +169,9 @@ int main()
 					arena.size = sf::Vector2i{500, 500};
 					arena.position = sf::Vector2i{0, 0};
 
-					// We will modify this line of code later
-					int tileSize = 50;
+					// Pass the vertex array by reference
+					// to the createBackground function
+					int tileSize = createBackground(background, arena);
 
 					// Spawn the player in middle of the arena
 					player.spawn(arena, MediaQuery::getResolution(), tileSize);
@@ -224,6 +234,9 @@ int main()
 			// set the mainView to be displayed in the window and
 			// draw everything related to it
 			window.setView(mainView);
+
+			// Draw the background
+			window.draw(background, &textureBackground);
 
 			// Draw the player
 			window.draw(player.getSprite());

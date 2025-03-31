@@ -2,6 +2,7 @@
 #include "player.h"
 #include "../core/constants/UISizing.cpp"
 #include <iostream>
+#include "../core/constants/Assets/Assets.h"
 
 Player::Player()
 	: m_Speed(START_SPEED),
@@ -17,7 +18,7 @@ Player::Player()
 {
 	// Associate a texture with the sprite
 	// !!Watch this space!!
-	if (!m_Texture.loadFromFile("./assets/graphics/player.png"))
+	if (!m_Texture.loadFromFile(Assets::player))
 	{
 		printf("Error loading player texture");
 	}

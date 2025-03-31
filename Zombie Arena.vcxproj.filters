@@ -27,12 +27,24 @@
     <ClCompile Include="src\core\constants\UISizing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CreateBackground.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\constants\Assets\Assets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\player\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\core\utils\media_query\MediaQuery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ZombieArena.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\constants\Assets\Assets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

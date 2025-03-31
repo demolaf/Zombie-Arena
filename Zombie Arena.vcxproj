@@ -190,14 +190,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CreateBackground.cpp" />
+    <ClCompile Include="src\core\constants\Assets\Assets.cpp" />
     <ClCompile Include="src\core\utils\media_query\MediaQuery.cpp" />
     <ClCompile Include="src\player\Player.cpp" />
     <ClCompile Include="src\core\constants\UISizing.cpp" />
     <ClCompile Include="Zombie Arena.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\constants\Assets\Assets.h" />
     <ClInclude Include="src\core\utils\media_query\MediaQuery.h" />
     <ClInclude Include="src\player\Player.h" />
+    <ClInclude Include="ZombieArena.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
